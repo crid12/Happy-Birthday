@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday, Mama!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffe5ec, #ffc2d1);
+      color: #333;
+      padding: 20px;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #d64161;
+      animation: fadeInDown 1.2s ease-out;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 20px 0;
+      border: 4px solid #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: zoomIn 1.5s ease-out;
+    }
+
+    .message-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      max-width: 90%;
+      animation: slideUp 1.5s ease;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      font-size: 0.85em;
+      color: #555;
+      margin-top: 30px;
+      animation: fadeIn 2.5s ease-in;
+    }
+
+    /* Music Button */
+    #mute-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #d64161;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      cursor: pointer;
+      animation: fadeIn 3s ease-in;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday, Mama! 🎉</h1>
+  <img src="IMG_1121.jpg" alt="Mom's Photo" class="photo" />
+
+  <div class="message-box">
+    <p>To my beautiful mother,</p>
+    <p>Thank you for your endless love, strength, and kindness. You are the heart of our home and the light of my life. Everything I am is because of you.</p>
+    <p>I made this little site just for you — to say I love you more than words can say. Have the most wonderful birthday, Mama. 💖</p>
+  </div>
+
+  <button id="mute-btn">Pause Music 🔇</button>
+
+  <footer>
+    Made with love by your only child • &copy; 2025
+  </footer>
+
+  <!-- 🎶 Background Music -->
+  <audio id="bg-music" loop autoplay>
+    <source src="Happy Birthday To You! (Traditional) First Time on YouTube.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <!-- 🎊 Confetti Library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // Confetti burst
+    function fireConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+    // Burst 3 times
+    fireConfetti();
+    setTimeout(fireConfetti, 1000);
+    setTimeout(fireConfetti, 2000);
+
+    // Music toggle
+    const music = document.getElementById("bg-music");
+    const muteBtn = document.getElementById("mute-btn");
+    let isPlaying = true;
+
+    muteBtn.addEventListener("click", () => {
+      if (isPlaying) {
+        music.pause();
+        muteBtn.textContent = "Play Music 🎵";
+      } else {
+        music.play();
+        muteBtn.textContent = "Pause Music 🔇";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
+</body>
+</html>
